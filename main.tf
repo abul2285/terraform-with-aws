@@ -83,3 +83,20 @@ resource "aws_security_group" "sg-1" {
     Name = "hello-sg"
   }
 }
+
+resource "aws_subnet" "subnet-1" {
+  vpc_id     = aws_vpc.vpc-1.id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "subnet 1"
+  }
+}
+resource "aws_subnet" "subnet-2" {
+  vpc_id     = aws_vpc.vpc-1.id
+  cidr_block = "10.0.2.0/24"
+
+  tags = {
+    Name = "subnet 2"
+  }
+}
