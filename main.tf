@@ -100,3 +100,14 @@ resource "aws_subnet" "subnet-2" {
     Name = "subnet 2"
   }
 }
+
+resource "aws_ecs_service" "service-1" {
+  name            = "hello-service"
+  cluster         = aws_ecs_cluster.cluster-1.id
+  task_definition = aws_ecs_task_definition.task-1.arn
+  desired_count   = 3
+  network_configuration {
+    security_groups = [aws_security_group.sg-1.id]
+    subnets         = [aws_subnet.subnet-1.id, aws_subnet.subnet-2.id]
+  }
+}
