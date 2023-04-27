@@ -41,3 +41,12 @@ TASK_DEFINITION
     cpu_architecture        = "X86_64"
   }
 }
+
+resource "aws_ecs_cluster" "cluster-1" {
+  name = "hello-cluster"
+
+  setting {
+    name  = "containerInsights"
+    value = "enabled"
+  }
+}
